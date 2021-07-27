@@ -4,7 +4,7 @@
 #include<stdlib.h>
 int main()
 {
-    int n,max,min;
+    int n;
     int*arr,*rev;
     printf("Enter array size: ");
     scanf("%d",&n);
