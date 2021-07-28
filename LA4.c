@@ -22,6 +22,7 @@ int main()
     printf("The sorted array is:\n");
     bubbleSort(arr,n);
     printArray(arr,n);
+    free((void*)arr);
 }
 void printArray(int*arr,int n)
 {

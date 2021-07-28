@@ -2,9 +2,6 @@
 
 #include<stdio.h>
 #include<stdlib.h>
-
-void printArray(int*,int);
-int* bubbleSort(int*,int);
 int main()
 {
     int n,a,b,count=0;
@@ -28,4 +25,5 @@ int main()
         }
     }
     printf("\ncount = %d\n",count);
+    free((void*)arr);
 }

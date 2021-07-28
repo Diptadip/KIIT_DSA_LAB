@@ -34,4 +34,6 @@ int main()
         printf("%3d",nge[i]);
     }
     printf("\n");
+    free((void*)arr);
+    free((void*)nge);
 }
