@@ -2,9 +2,6 @@
 
 #include<stdio.h>
 #include<stdlib.h>
-
-void printArray(int*,int);
-int* bubbleSort(int*,int);
 int main()
 {
     int n;
