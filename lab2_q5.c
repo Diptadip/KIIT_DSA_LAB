@@ -8,7 +8,6 @@ typedef struct studentRecord{
 }student;
 
 student* fillRecord(student*,int);
-char grade(float cgpa);
 void printRecords(student*,int);
 
 int main()
@@ -51,22 +50,6 @@ student* fillRecord(student* s, int n)
     }
     return s;
 }
-char grade(float cgpa)
-{
-    if(cgpa>=9)
-        return 'O';
-    if(cgpa>=8)
-        return 'E';
-    if(cgpa>=7)
-        return 'A';
-    if(cgpa>=6)
-        return 'B';
-    if(cgpa>=5)
-        return 'C';
-    if(cgpa>=4)
-        return 'D';
-    return 'F';
-}
 void printRecords(student* s,int n)
 {
     printf("\nPrinting all student records...\n");
@@ -75,7 +58,5 @@ void printRecords(student* s,int n)
         printf("%-20s %3s %-20s\n","Name",":",s[i].name);
         printf("%-20s %3s %-20s\n","Gender",":",s[i].gender);
         printf("%-20s %3s %-20.2f\n","CGPA",":",s[i].cgpa);
-        printf("%-20s %3s %-20c\n","Grade",":",grade(s[i].cgpa));
-
     }
 }

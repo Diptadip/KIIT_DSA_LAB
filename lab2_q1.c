@@ -6,13 +6,11 @@ typedef struct employeeRecord{
     char designation[20];
     char department[10];
     float basic;
-    float gross;
 }employee;
 
 employee* fillRecord(employee*,int);
 void printRecords(employee*,int);
-float calculateGrossPay(float);
-void putGrossPay(employee*,int);
+void printAmounts(float);
 
 int main()
 {
@@ -22,7 +20,6 @@ int main()
     scanf("%d",&n);
     emp=(employee*)malloc(n*sizeof(employee));
     emp=fillRecord(emp,n);
-    putGrossPay(emp,n);
     printRecords(emp,n);
     free((void*)emp);
 
@@ -65,20 +62,16 @@ void printRecords(employee* emp,int n)
         printf("%-20s %3s %-20s\n","Designation",":",emp[i].designation);
         printf("%-20s %3s %-20s\n","Department",":",emp[i].department);
         printf("%-20s %3s %-20.2f\n","Basic Pay",":",emp[i].basic);
-        printf("%-20s %3s %-20.2f\n","Gross Pay",":",emp[i].gross);
+        printAmounts(emp[i].basic);
     }
 }
-float calculateGrossPay(float basic)
+void printAmounts(float basic)
 {
     float gross,hr,da;
     hr=0.25*basic;
     da=0.75*basic;
     gross=basic+hr+da;
-    return gross;
-}
-void putGrossPay(employee* emp,int n)
-{
-    for(int i=0;i<n;i++){
-        emp[i].gross=calculateGrossPay(emp[i].basic);
-    }
+    printf("%-20s %3s %-20.2f\n","HR",":",hr);
+    printf("%-20s %3s %-20.2f\n","DA",":",da);
+    printf("%-20s %3s %-20.2f\n","Gross Pay",":",gross);
 }

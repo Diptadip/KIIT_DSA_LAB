@@ -1,62 +1,45 @@
 #include<stdio.h>
 #include<stdlib.h>
-typedef struct studentRecord{
-    int roll;
-    char name[25];
-    char gender[10];
-    float cgpa;
-}student;
 
-student* fillRecord(student*,int);
-void printRecords(student*,int);
+int* selectionSort(int*,int);
+void printArray(int*,int);
 
 int main()
 {
-    int n;
-    student* s;
-    printf("Enter number of students: ");
+    int n,*arr;
+    printf("Enter array size: ");
     scanf("%d",&n);
-    s=(student*)malloc(n*sizeof(student));
-    s=fillRecord(s,n);
-    printRecords(s,n);
-    free((void*)s);
-
-}
-student* fillRecord(student* s, int n)
-{
-    printf("Enter %d records\n ",n);
+    arr=(int*)malloc(n*sizeof(int));
+    printf("Enter %d integers \n",n);
     for(int i=0;i<n;i++){
-        printf("Enter student %d roll: ",i+1);
-        fflush(stdin);
-        scanf("%d",&s[i].roll);
-        
-
-        printf("Enter student %d name: ",i+1);
-        fflush(stdin);
-        gets(s[i].name);
-        
-
-        printf("Enter student %d gender: ",i+1);
-        fflush(stdin);
-        gets(s[i].gender);
-        
-
-        printf("Enter student %d cgpa: ",i+1);
-        fflush(stdin);
-        scanf("%f",&s[i].cgpa);
-        
-
-        printf("\n");
+        scanf("%d",&arr[i]);
     }
-    return s;
+    printf("The entered array is: ");
+    printArray(arr,n);
+    printf("The sorted array is: ");
+    selectionSort(arr,n);
+    printArray(arr,n);
+    free((void*)arr);
 }
-void printRecords(student* s,int n)
+void printArray(int* arr,int n)
 {
-    printf("\nPrinting all student records...\n");
     for(int i=0;i<n;i++){
-        printf("\n%-20s %3s %-20d\n","Roll number",":",s[i].roll);
-        printf("%-20s %3s %-20s\n","Name",":",s[i].name);
-        printf("%-20s %3s %-20s\n","Gender",":",s[i].gender);
-        printf("%-20s %3s %-20.2f\n","CGPA",":",s[i].cgpa);
+        printf("%3d",arr[i]);
+    }
+    printf("\n");
+}
+int* selectionSort(int*arr,int n)
+{
+    for (int i = n-1; i> 0; i--){ // number of passes
+        int largest = arr[0];
+        int index = 0;
+        for (int j = 1; j <=i; j++){ // number of comparisons in each pass
+            if (arr[j] > largest){
+                largest = arr[j];
+                index = j;
+            }
+        }
+        arr[index] = arr[i];
+        arr[i] = largest;
     }
 }
