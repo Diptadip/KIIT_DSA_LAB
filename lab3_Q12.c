@@ -23,6 +23,7 @@ int main()
 
     printf("The entered matrices are: \n");
     printMatrix(a);
+    printf("\n");
     printMatrix(b);
 
     printf("Multiplying...\n");
