@@ -20,28 +20,24 @@ void printList(struct Node *node)
         node=node->next;
     }
 }
-int deleteNode(struct Node** head_ref, int key)
+void deleteList(struct Node** head)
 {
-    struct Node *temp = *head_ref, *prev;
-    if (temp != NULL && temp->data == key) {
-        *head_ref = temp->next; 
+    struct Node *temp;
+
+    while(*head != NULL)
+    {
+        temp = *head;
+        *head = (*head)->next;
+
         free(temp);
-        return 0;
     }
-    while (temp != NULL && temp->data != key) {
-        prev = temp;
-        temp = temp->next;
-    }
-    if (temp == NULL)
-        return -1;
-    prev->next = temp->next; 
-    free(temp);
-    return 0;
+
+    printf("Deleted all nodes\n");
 }
 int main()
 {
     struct Node* head=NULL;
-    int n,input,key;
+    int n,input;
     printf("how many nodes u want to enter? ");
     scanf("%d",&n);
     for(int i=0;i<n;i++){
@@ -51,13 +47,5 @@ int main()
     }
     printf("\nThe entered linked list is: ");
     printList(head);    
-    printf("\nEnter the value of node u want to delete: ");
-    scanf("%d",&key);
-    if(deleteNode(&head,key)>=0){
-        printf("\nSuccefully deleted\nThe list after deletion is: ");
-        printList(head);
-    }
-    else{
-        printf("\nList may be NULL or element not present\n");
-    }
+    deleteList(&head);
 }
