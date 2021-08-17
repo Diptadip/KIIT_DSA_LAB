@@ -41,7 +41,7 @@ void swapElements(int*x , int* y)
 void swap(int**arr,int n)
 {
     for(int i=0;i<n;i++){
-        for(int j=0;j<=n/2;j++){
+        for(int j=0;j<n/2;j++){
             swapElements(&arr[i][j],&arr[i][n-1-j]);
         }
     }

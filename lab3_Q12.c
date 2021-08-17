@@ -1,8 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-
-
 typedef struct Matrix{
     int rows;
     int cols;
@@ -23,6 +21,7 @@ int main()
 
     printf("The entered matrices are: \n");
     printMatrix(a);
+    printf("\n");
     printMatrix(b);
 
     printf("Multiplying...\n");
