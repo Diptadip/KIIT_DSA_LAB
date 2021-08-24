@@ -32,7 +32,7 @@ void deleteList(struct Node** head)
         free(temp);
     }
 
-    printf("Deleted all nodes\n");
+    printf("\nDeleted all nodes\n");
 }
 int main()
 {
