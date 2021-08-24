@@ -55,6 +55,6 @@ int main()
     }
     printf("\nThe entered linked list is: ");
     printForward(head);    
-    printf("\nPrinting rewards: ");
+    printf("\nPrinting backwards: ");
     printBackward(head); 
 }
