@@ -61,7 +61,7 @@ void deleteHead(struct Node **head)
         return;
     }
     ptr=(*head)->next;
-    printf("deleted %d ",(*head)->data);
+    printf("deleting node %d\n",(*head)->data);
     free((void*)(*head));
     *head=ptr;
 }
