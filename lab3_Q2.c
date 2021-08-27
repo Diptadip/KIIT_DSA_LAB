@@ -17,7 +17,7 @@ int main()
     printf("\nSecond smallest = %d\nSecond largest = %d\n",arr[1],arr[n-2]);
     return 0;
 }
-int* bubbleSort(int*arr,int n)
+int* bubbleSort(int*arr,int n);
 {
     for(int i=0;i<n;i++)
     {
