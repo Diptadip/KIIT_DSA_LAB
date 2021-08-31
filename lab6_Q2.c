@@ -91,15 +91,20 @@ int main()
     scanf("%d",&a);
     buildPoly(a,&A);
     //displayPoly(A);
-    printf("\n");
+    //printf("\n");
 
     printf("Enter max exponent of 2nd polynomial: ");
     scanf("%d",&b);
     buildPoly(b,&B);
     //displayPoly(B);
-    printf("\n");
+    //printf("\n");
 
-    printf("Addition is: ");
+    printf("A: ");
+    displayPoly(A);
+    printf("\nB: ");
+    displayPoly(B);
+
+    printf("\nAddition is: ");
     C=add(A,B);
     reverseList(&C);
     displayPoly(C);

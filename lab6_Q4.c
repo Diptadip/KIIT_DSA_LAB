@@ -100,15 +100,20 @@ int main()
     scanf("%d",&a);
     buildPoly(a,&A);
     //displayPoly(A);
-    printf("\n");
+    //printf("\n");
 
     printf("Enter max exponent of 2nd polynomial: ");
     scanf("%d",&b);
     buildPoly(b,&B);
     //displayPoly(B);
-    printf("\n");
+    //printf("\n");
 
-    printf("multipliation is: ");
+    printf("A: ");
+    displayPoly(A);
+    printf("\nB: ");
+    displayPoly(B);
+
+    printf("\nmultipliation is: ");
     D=multiply(A,B);
     reverseList(&D);
     displayPoly(D);

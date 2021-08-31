@@ -56,6 +56,12 @@ int main()
     B=buildPoly(b);
     //displayPoly(B,b);
     
+    printf("A: ");
+    displayPoly(A,a);
+    printf("\nB: ");
+    displayPoly(B,b);
+
+    printf("\nMultiplication: ");
     //multiply
     d=a+b;
     D=multiply(A,B,a,b);

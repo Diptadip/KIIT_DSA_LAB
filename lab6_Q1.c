@@ -66,6 +66,11 @@ int main()
     B=buildPoly(b);
     //displayPoly(B,b);
 
+    printf("A: ");
+    displayPoly(A,a);
+    printf("\nB: ");
+    displayPoly(B,b);
+
     //adding
     c=max(a,b);
     C=add(A,B,a,b);
