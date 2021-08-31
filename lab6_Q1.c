@@ -31,21 +31,31 @@ int max(int a,int b)
 {
     return (a>b) ? a : b;
 }
-
-int* multiply(int*A,int*B,int a,int b)
+int* add(int* A,int *B,int a,int b)
 {
-    int c=a+b;
-    int*C=(int*)calloc(c+1,sizeof(int));
-    for(int i=0;i<=a;i++){
-        for(int j=0;j<=b;j++){
-            C[i+j] += A[i]*B[j];
+    int c=max(a,b);
+    int *C=(int*)calloc(c+1,sizeof(int));
+    if(a==c){
+        for(int i=0;i<=a;i++){
+            C[i]=A[i];
+        }
+        for(int i=0;i<=b;i++){
+            C[i]+=B[i];
+        }
+    }
+    else{
+        for(int i=0;i<=b;i++){
+            C[i]=B[i];
+        }
+        for(int i=0;i<=a;i++){
+            C[i]+=A[i];
         }
     }
     return C;
 }
 int main()
 {
-    int*A,*B,*D,a,b,d;
+    int*A,*B,*C,a,b,c;
     printf("Enter max exponent of 1st polynomial: ");
     scanf("%d",&a);
     A=buildPoly(a);
@@ -55,9 +65,10 @@ int main()
     scanf("%d",&b);
     B=buildPoly(b);
     //displayPoly(B,b);
-    
-    //multiply
-    d=a+b;
-    D=multiply(A,B,a,b);
-    displayPoly(D,d);
+
+    //adding
+    c=max(a,b);
+    C=add(A,B,a,b);
+    printf("\nAddition is : ");
+    displayPoly(C,c);
 }

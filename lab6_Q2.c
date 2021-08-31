@@ -54,47 +54,38 @@ void displayPoly(struct Node* head)
         ptr=ptr->next;
     }
 }
-void removeDups(struct Node** ptr)
+struct Node* add(struct Node* A,struct Node*B)
 {
-    struct Node *ptr1, *ptr2, *dup;
-    ptr1 = *ptr;
-    while (ptr1 != NULL && ptr1->next != NULL) {
-        ptr2 = ptr1; 
-        while (ptr2->next != NULL) {
-            if (ptr1->expo == ptr2->next->expo) {
-                ptr1->coeff = ptr1->coeff + ptr2->next->coeff;
-                dup = ptr2->next;
-                ptr2->next = ptr2->next->next;
-                free((void*)dup);
+    struct Node* C=NULL;    
+    if(A->expo>B->expo){
+        while(A){
+            int expo=A->expo;
+            int coeff=A->coeff;
+            if(A->expo==B->expo){
+                coeff+=B->coeff;
+                B=B->next;
             }
-            else
-                ptr2 = ptr2->next;
+            addAtHead(&C,expo,coeff);
+            A=A->next;
         }
-        ptr1 = ptr1->next;
     }
-}
-struct Node* multiply(struct Node* A,struct Node* B)
-{
-    struct Node *ptr1, *ptr2, *C=NULL;
-    ptr1 = A;
-    ptr2 = B;
-    while (ptr1 != NULL) {
-        while (ptr2 != NULL) {
-            int coeff, expo;
-            coeff = ptr1->coeff * ptr2->coeff;
-            expo = ptr1->expo + ptr2->expo;
-            addAtHead(&C, expo, coeff);
-            ptr2 = ptr2->next;
+    else{
+        while(B){
+            int expo=B->expo;
+            int coeff=B->coeff;
+            if(B->expo==A->expo){
+                coeff+=A->coeff;
+                A=A->next;
+            }
+            addAtHead(&C,expo,coeff);
+            B=B->next;
         }
-        ptr2 = B;
-        ptr1 = ptr1->next;
     }
-    removeDups(&C);
-    return C;
+    return C;    
 }
 int main()
 {
-    struct Node* A=NULL,*B=NULL,*D;
+    struct Node* A=NULL,*B=NULL,*C;
     int a,b;
     printf("Enter max exponent of 1st polynomial: ");
     scanf("%d",&a);
@@ -108,9 +99,9 @@ int main()
     //displayPoly(B);
     printf("\n");
 
-    printf("multipliation is: ");
-    D=multiply(A,B);
-    reverseList(&D);
-    displayPoly(D);
-    
+    printf("Addition is: ");
+    C=add(A,B);
+    reverseList(&C);
+    displayPoly(C);
+    printf("\n");    
 }
