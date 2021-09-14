@@ -2,7 +2,7 @@
 #include<stdlib.h>
 
 struct Stack{
-    int arr[10];
+    int *arr;
     int tos;
 };
 void push(struct Stack* s,int n)
@@ -30,6 +30,7 @@ int main()
     int n,ch,value;
     printf("Enter the numer of Stack elements: ");
     scanf("%d",&n);
+    s->arr=(int*)malloc(n*sizeof(int));
     s->tos=-1;
     do{
         printf("\n1. Push\n");
@@ -41,7 +42,7 @@ int main()
         scanf("%d",&ch);
         switch(ch){
             case 1:
-                if(s->tos==n){
+                if(s->tos==n-1){
                     printf("Stack overflow\n");
                     break;
                 }

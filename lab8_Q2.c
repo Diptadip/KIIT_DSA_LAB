@@ -72,7 +72,7 @@ int main()
                 break;
             case 5:
                 printf("Exitting code\n");
-                break;
+                exit(0);
             default:
                 printf("Wrong input\n");
         }
