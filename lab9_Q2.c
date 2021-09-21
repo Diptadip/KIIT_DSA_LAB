@@ -56,7 +56,6 @@ int front(struct Queue* queue)
 	return queue->array[queue->front];
 }
 
-// Function to get rear of queue
 int rear(struct Queue* queue)
 {
 	if (isEmpty(queue))
@@ -67,12 +66,8 @@ void reverseQueue(struct Queue* queue)
 {
     if (isEmpty(queue))
         return; 
-    // Dequeue current item (from front) 
     int data = dequeue(queue); 
-    // Reverse remaining queue 
     reverseQueue(queue);
- 
-    // Enqueue current item (to rear) 
     enqueue(queue,data);
 }
 void display(struct Queue* queue)
@@ -88,7 +83,7 @@ int main()
     int cap,n,ch,value;
     printf("Enter queue capacity: ");
     scanf("%d",&cap);
-    struct Queue* queue = createQueue(cap);
+    struct Queue* queue = createQueue(2*cap);
     printf("How many elements you want to enter (<=%d) ?? ",cap);
     scanf("%d",&n);
     printf("Enter %d inetegers: ",n);

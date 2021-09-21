@@ -3,7 +3,7 @@
 struct Node{
     int data;
     struct Node* next;
-}
+};
 struct Node *front = NULL, *rear = NULL;
 
 void enqueue(int val)
@@ -58,4 +58,43 @@ void printList()
         temp = temp->next;
     }
     printf("NULL\n");
+}
+int main()
+{
+    int n,ch,value;
+    do{
+        printf("\n1.Enqueue\n");
+        printf("2.Dequeue\n");
+        printf("3.Peek\n");
+        printf("4.Display\n");
+        printf("5.Is empty\n");
+        printf("6.Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d",&ch);
+        switch(ch){
+            case 1:
+                printf("Enter value: ");
+                scanf("%d",&value);
+                enqueue(value);
+                break;
+            
+            case 2:
+                dequeue();
+                break;
+            case 3:
+                peek();
+                break;
+            case 4:
+                printList();
+                break;
+            case 5:
+                if(isEmpty())printf("Queue is empty\n");
+                else printf("Queue is not empty\n");
+                break;
+            case 6:
+                exit(0);
+            default:
+                printf("Wrong input\n");
+        }
+    }while(1);
 }
