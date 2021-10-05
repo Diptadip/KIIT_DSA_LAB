@@ -13,7 +13,7 @@ struct HeadNode{
 };
 void push(struct HeadNode **hr,int value)
 {
-    struct Node* head=(*hr)->next;   
+    struct Node* head=(*hr)->next;  
     struct Node* new_node = (struct Node*) malloc(sizeof(struct Node)); 
     struct Node *last = head;
     new_node->data  = value;
@@ -21,8 +21,9 @@ void push(struct HeadNode **hr,int value)
     if (head == NULL)
     {
        head= new_node;
+       (*hr)->next=head;
        return;
-       printf("1");
+      
     }       
     
     while (last->next != NULL)
@@ -37,7 +38,7 @@ void printList(struct HeadNode *hr)
         printf("%3d",head->data);
         head=head->next;
     }
-    printf("\ncount = %d\nmax = %d\nmin = %d",hr->count,hr->max,hr->min);
+    printf("\ncount = %d\nmax = %d\nmin = %d\n",hr->count,hr->max,hr->min);
 }
 int setMax(struct HeadNode *hr)
 {
@@ -101,5 +102,9 @@ int main()
         hr->max=setMax(hr);
         hr->min=setMin(hr);
     }
+    printf("The list is: \n");
+    printList(hr);
+    deleteFromEnd(&hr);
+    printf("The list is: \n");
     printList(hr);
 }
