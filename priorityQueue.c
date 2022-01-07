@@ -7,7 +7,7 @@ struct Node {
 	struct Node* next;
 };
 
-void push(struct Node** head,char d,int p)
+void insert(struct Node** head,char d,int p)
 {
 	struct Node* node=(struct Node*)malloc(sizeof(struct Node));
 	node->data=(int)d;
@@ -36,7 +36,7 @@ int peek(struct Node** head)
 	return (*head)->data;
 }
 
-void pop(struct Node** head)
+void delete(struct Node** head)
 {
 	struct Node* temp = *head;
 	(*head) = (*head)->next;
@@ -54,19 +54,19 @@ int main()
     int n,p;
     char d;
     struct Node* head=NULL;
-    printf("Enter no of nodes: ");
+    printf("Enter no of tasks: ");
     scanf("%d",&n);
-    printf("Enter %d nodes in order - <data><space><priority>\n",n);
+    printf("Enter %d tasks in order - <data><space><priority>\n",n);
     for(int i=0;i<n;i++){
-        printf("node %d: ",i+1);
+        printf("task %d: ",i+1);
 		fflush(stdin);
         scanf("%c %d",&d,&p);
-        push(&head,d,p);
+        insert(&head,d,p);
     }
     printf("\n");
 	while (!isEmpty(&head)) {
 		printf("%c >> ", peek(&head));
-		pop(&head);
+		delete(&head);
 	}
 	printf("NULL \n");
 
